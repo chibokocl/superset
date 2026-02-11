@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  reporting-db:
+    image: openlmis/postgres:12-debezium
+    container_name: reporting-db
+    environment:
+      POSTGRES_PASSWORD: "p@ssw0rd"
+    ports:
+      - "5434:5432"
+    volumes:
+      - reporting-db-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  reporting-db-data:
